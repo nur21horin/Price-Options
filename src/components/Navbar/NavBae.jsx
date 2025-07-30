@@ -12,14 +12,21 @@ const NavBar = () => {
   ];
 
   return (
-    <div className="md:flex">
-      <div className="md:hidden" onClick={() => setOpen(true)}>
-        {open === true ? "open" : "close"}
-        <AiOutlineMenuFold className="text-2xl " />
+    <div className="text-black bg-amber-300">
+      <div className="md:hidden text-2xl" onClick={() => setOpen(!open)}>
+        {open === true ? (
+          <AiOutlineMenuFold className="text-2xl " />
+        ) : (
+          <AiOutlineMenuFold className="text-2xl " />
+        )}
       </div>
-      {routes.map((route) => (
-        <Link key={route.id} route={route}></Link>
-      ))}
+      <ul className={`md:flex duration-1000 absolute
+      ${open?'top-16':'-top-60'}
+       bg-amber-500 px-6`}>
+        {routes.map((route) => (
+          <Link key={route.id} route={route}></Link>
+        ))}
+      </ul>
     </div>
   );
 };
